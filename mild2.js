@@ -83,6 +83,31 @@ class NewGame {
         
     }
 
+    player2Turn (){
+        player2Hand = plyr2Deck.slice(0, 1)
+        alert (`${plyr2} has drawn ${player2Hand[0]}`)
+        player1Hand = plyr1Deck.slice(0, 1);
+        alert(`${plyr1} has drawn ${player1Hand[0]}`)
+        if (player1Hand[0].strength > player2Hand[0].strength){
+            plyr1Deck.push(player1Hand)
+            plyr1Deck.push(player2Hand)
+            alert(`${this._players1} wins this round. ${plyr1} starts the next round.`)
+            this.playGame()
+        }
+        else if (player2Hand[0].strength > player1Hand[0].strength){
+            plyr2Deck.push(player2Hand)
+            plyr2Deck.push(player1Hand)
+            alert(`${this._players2} wins this round. ${plyr2} starts the next round`)
+            this.player2Turn()
+        }
+        else if (player1Hand[0].strength == player2Hand[0].strength) {
+            limbo.push(player1Hand)
+            limbo.push(player2Hand)
+            alert("It is a draw. Cards are now in limbo")
+            this.limboRound()
+        }
+    }
+
     limboRound() {
         alert("limbo round has begun. win the round to win the limbo deck")
         player1Hand = plyr1Deck.slice(0, 1)
