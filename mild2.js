@@ -57,18 +57,20 @@ class NewGame {
     }
     drawCards() {
         player1Hand = plyr1Deck.splice(0, 1);
-        alert(`${this._players1} has drawn ${player1Hand[0].name} with a stregnth of ${player1Hand[0].strength}`)
+        alert(`${this._players1} has drawn ${player1Hand[0].name} with a strength of ${player1Hand[0].strength}`)
         player2Hand = plyr2Deck.splice(0, 1)
-        alert (`${this._players2} has drawn ${player2Hand[0].name} with a stregnth of ${player2Hand[0].strength}`)
+        alert (`${this._players2} has drawn ${player2Hand[0].name} with a strength of ${player2Hand[0].strength}`)
         
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand, player2Hand)
             alert(`${this._players1} wins this round. ${this._players1} starts the next round`)
+            alert(`${this._players1} now has ${plyr1Deck.length}. ${this._players1} starts the next round.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
             plyr2Deck.push(player2Hand, player1Hand)
             alert(`${this._players2} wins this round. ${this._players2} starts the next round`)
+            alert(`${this._players2} now has ${plyr2Deck.length}. ${this._players2} starts the next round.`)
             this.checkVictory()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
@@ -105,20 +107,22 @@ class NewGame {
 
     player2Turn (){
         player2Hand = plyr2Deck.slice(0, 1)
-        alert (`${this._players2} has drawn ${player2Hand[0]} with a stregnth of ${player2Hand[0].strength}`)
+        alert (`${this._players2} has drawn ${player2Hand[0].name} with a strength of ${player2Hand[0].strength}`)
         player1Hand = plyr1Deck.slice(0, 1);
-        alert(`${this._players1} has drawn ${player1Hand[0]} with a stregnth of ${player1Hand[0].strength}`)
+        alert(`${this._players1} has drawn ${player1Hand[0].name} with a strength of ${player1Hand[0].strength}`)
 
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand)
             plyr1Deck.push(player2Hand)
-            alert(`${this._players1} wins this round. ${this._players1} starts the next round.`)
+            alert(`${this._players1} wins this round.`)
+            alert(`${this._players1} now has ${plyr1Deck.length}. ${this._players1} starts the next round.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
             plyr2Deck.push(player2Hand)
             plyr2Deck.push(player1Hand)
-            alert(`${this._players2} wins this round. ${this._players2} starts the next round`)
+            alert(`${this._players2} wins this round.`)
+            alert(`${this._players2} now has ${plyr2Deck.length}. ${this._players2} starts the next round.`)
             this.checkVictoryP2()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
@@ -132,22 +136,24 @@ class NewGame {
     limboRound() {
         alert("limbo round has begun. win the round to win the limbo deck")
         player1Hand = plyr1Deck.slice(0, 1)
-        alert(`${this._players1} has drawn ${player1Hand[0]} with a stregnth of ${player1Hand[0].strength}`)
+        alert(`${this._players1} has drawn ${player1Hand[0].name} with a strength of ${player1Hand[0].strength}`)
         player2Hand = plyr2Deck.slice(0, 1) 
-        alert (`${this._players2} has drawn ${player2Hand[0]} with a stregnth of ${player2Hand[0].strength}`)
+        alert (`${this._players2} has drawn ${player2Hand[0].name} with a strength of ${player2Hand[0].strength}`)
     
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand)
             plyr1Deck.push(player2Hand)
             plyr1Deck.push(limbo)
-            alert(`${this._players1} wins this round. ${this._players1} starts the next round`)
+            alert(`${this._players1} wins this round.`)
+            alert(`${this._players1} now has ${plyr1Deck.length}. ${this._players1} starts the next round.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
             plyr2Deck.push(player2Hand)
             plyr2Deck.push(player1Hand)
             plyr2Deck.push(limbo)
-            alert(`${this._players2} wins this round. ${this._players2} starts the next round`)
+            alert(`${this._players2} wins this round.`)
+            alert(`${this._players2} now has ${plyr2Deck.length}. ${this._players2} starts the next round.`)
             this.checkVictoryP2()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
@@ -170,9 +176,9 @@ const play1 = new NewGame (plyr1, plyr2)
 let test1 = shuffle(card)
             alert("Now that the deck has been shuffled its time to deal the cards")
 
-let plyr1Deck = test1.slice(0, 15)
+plyr1Deck = test1.slice(0, 15)
 
-let plyr2Deck = test1.slice(15)             //maybe can just push halfdeck into class
+plyr2Deck = test1.slice(15)             //maybe can just push halfdeck into class
             
             alert ("The cards have been dealt. The game begins")
 
