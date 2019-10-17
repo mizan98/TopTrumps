@@ -65,6 +65,7 @@ class NewGame {
             plyr1Deck.push(player1Hand, player2Hand)
             alert(`${this._players1} wins this round.`)
             alert(`${this._players1} now has ${plyr1Deck.length} cards. ${this._players1} starts the next round.`)
+            alert(`${this._players2} now has ${plyr2Deck.length} cards.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
@@ -106,28 +107,27 @@ class NewGame {
     }
 
     player2Turn (){
-        player2Hand = plyr2Deck.slice(0, 1)
+        player2Hand = plyr2Deck.splice(0, 1)
         alert (`${this._players2} has drawn ${player2Hand[0].name} with a strength of ${player2Hand[0].strength}`)
-        player1Hand = plyr1Deck.slice(0, 1);
+        player1Hand = plyr1Deck.splice(0, 1);
         alert(`${this._players1} has drawn ${player1Hand[0].name} with a strength of ${player1Hand[0].strength}`)
 
         if (player1Hand[0].strength > player2Hand[0].strength){
-            plyr1Deck.push(player1Hand)
-            plyr1Deck.push(player2Hand)
+            plyr1Deck.push(player1Hand, player2Hand)
             alert(`${this._players1} wins this round.`)
             alert(`${this._players1} now has ${plyr1Deck.length} cards. ${this._players1} starts the next round.`)
+            alert(`${this._players2} now has ${plyr2Deck.length} cards.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
-            plyr2Deck.push(player2Hand)
-            plyr2Deck.push(player1Hand)
+            plyr2Deck.push(player2Hand, player1Hand)
             alert(`${this._players2} wins this round.`)
             alert(`${this._players2} now has ${plyr2Deck.length} cards. ${this._players2} starts the next round.`)
+            alert(`${this._players1} now has ${plyr1Deck.length} cards.`)
             this.checkVictoryP2()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
-            limbo.push(player1Hand)
-            limbo.push(player2Hand)
+            limbo.push(player1Hand, player2Hand)
             alert("It is a draw. Cards are now in limbo")
             this.limboRound()
         }
@@ -135,30 +135,28 @@ class NewGame {
 
     limboRound() {
         alert("limbo round has begun. win the round to win the limbo deck")
-        player1Hand = plyr1Deck.slice(0, 1)
+        player1Hand = plyr1Deck.splice(0, 1)
         alert(`${this._players1} has drawn ${player1Hand[0].name} with a strength of ${player1Hand[0].strength}`)
-        player2Hand = plyr2Deck.slice(0, 1) 
+        player2Hand = plyr2Deck.splice(0, 1) 
         alert (`${this._players2} has drawn ${player2Hand[0].name} with a strength of ${player2Hand[0].strength}`)
     
         if (player1Hand[0].strength > player2Hand[0].strength){
-            plyr1Deck.push(player1Hand)
-            plyr1Deck.push(player2Hand)
-            plyr1Deck.push(limbo)
+            plyr1Deck.push(player1Hand, player2Hand, limbo)
             alert(`${this._players1} wins this round with the limbo cards.`)
             alert(`${this._players1} now has ${plyr1Deck.length} cards. ${this._players1} starts the next round.`)
+            alert(`${this._players2} now has ${ply2Deck.length} cards.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
-            plyr2Deck.push(player2Hand)
-            plyr2Deck.push(player1Hand)
-            plyr2Deck.push(limbo)
+            plyr2Deck.push(player2Hand, player1Hand, limbo)
             alert(`${this._players2} wins this round wth the limbo cards.`)
             alert(`${this._players2} now has ${plyr2Deck.length} cards. ${this._players2} starts the next round.`)
+            alert(`${this._players1} now has ${plyr1Deck.length} cards.`)
             this.checkVictoryP2()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
-            limbo.push(player1Hand)
-            limbo.push(player2Hand)
+            limbo.push(player1Hand, player2Hand)
+            limbo.push()
             alert("It is a draw. Cards are now in limbo")
             this.limboRound()
         } 
