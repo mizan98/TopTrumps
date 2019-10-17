@@ -27,7 +27,6 @@ let card = [
     {name: "pidget", strength: 40},
     {name: "ekans", strength: 50},
     {name: "arbok", strength: 60},
-    {name: "jigglypuff", strength: 80},
     {name: "lickitung", strength: 50},
     {name: "meowth", strength: 40}
 ]
@@ -56,83 +55,96 @@ class NewGame {
         this._players1 = players1
         this._players2 = players2
     }
-    playGame() {
-        player1Hand = plyr1Deck.slice(0, 1);
-        alert(`${plyr1} has drawn ${player1Hand[0]}`)
-        player2Hand = plyr2Deck.slice(0, 1)
-        alert (`${plyr2} has drawn ${player2Hand[0]}`)
-
+    drawCards() {
+        player1Hand = plyr1Deck.splice(0, 1);
+        
+        // alert(`${plyr1} has drawn ${player1Hand[0]}`)
+      
+        player2Hand = plyr2Deck.splice(0, 1)
+        // alert (`${plyr2} has drawn ${player2Hand[0]}`)
+        
         if (player1Hand[0].strength > player2Hand[0].strength){
-            plyr1Deck.push(player1Hand)
-            plyr1Deck.push(player2Hand)
-            alert(`${this._players1} wins this round. ${plyr1} starts the next round`)
-            this.playGame()
+            plyr1Deck.push(player1Hand, player2Hand)
+            // alert(`${this._players1} wins this round. ${plyr1} starts the next round`)
+            this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
-            plyr2Deck.push(player2Hand)
-            plyr2Deck.push(player1Hand)
-            alert(`${this._players2} wins this round. ${plyr2} starts the next round`)
-            this.player2Turn()
+            plyr2Deck.push(player2Hand, player1Hand)
+  
+            // alert(`${this._players2} wins this round. ${plyr2} starts the next round`)
+            this.checkVictory()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
             limbo.push(player1Hand)
             limbo.push(player2Hand)
-            alert("It is a draw. Cards are now in limbo")
-            this.limboRound()
+            // alert("It is a draw. Cards are now in limbo")
+            // this.limboRound()
         }
         
     }
 
+    checkVictory() {
+        if (plyr1Deck.length == card.length){
+            console.log("congratulations p1 win")
+        }
+        else if(plyr2Deck.lrngth == card.length){
+            console.log("congratulations p2 wins")
+        }
+        else {
+            this.drawCards()
+        }
+    }
+
     player2Turn (){
         player2Hand = plyr2Deck.slice(0, 1)
-        alert (`${plyr2} has drawn ${player2Hand[0]}`)
+        // alert (`${plyr2} has drawn ${player2Hand[0]}`)
         player1Hand = plyr1Deck.slice(0, 1);
-        alert(`${plyr1} has drawn ${player1Hand[0]}`)
+        // alert(`${plyr1} has drawn ${player1Hand[0]}`)
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand)
             plyr1Deck.push(player2Hand)
-            alert(`${this._players1} wins this round. ${plyr1} starts the next round.`)
+            // alert(`${this._players1} wins this round. ${plyr1} starts the next round.`)
             this.playGame()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
             plyr2Deck.push(player2Hand)
             plyr2Deck.push(player1Hand)
-            alert(`${this._players2} wins this round. ${plyr2} starts the next round`)
+            // alert(`${this._players2} wins this round. ${plyr2} starts the next round`)
             this.player2Turn()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
             limbo.push(player1Hand)
             limbo.push(player2Hand)
-            alert("It is a draw. Cards are now in limbo")
+            // alert("It is a draw. Cards are now in limbo")
             this.limboRound()
         }
     }
 
     limboRound() {
-        alert("limbo round has begun. win the round to win the limbo deck")
+        // alert("limbo round has begun. win the round to win the limbo deck")
         player1Hand = plyr1Deck.slice(0, 1)
-        alert(`${plyr1} has drawn ${player1Hand[0]}`)
+        // alert(`${plyr1} has drawn ${player1Hand[0]}`)
         player2Hand = plyr2Deck.slice(0, 1) 
-        alert (`${plyr2} has drawn ${player2Hand[0]}`)
+        // alert (`${plyr2} has drawn ${player2Hand[0]}`)
     
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand)
             plyr1Deck.push(player2Hand)
             plyr1Deck.push(limbo)
-            alert(`${this._players1} wins this round. ${plyr1} starts the next round`)
+            // alert(`${this._players1} wins this round. ${plyr1} starts the next round`)
             this.playGame()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
             plyr2Deck.push(player2Hand)
             plyr2Deck.push(player1Hand)
             plyr2Deck.push(limbo)
-            alert(`${this._players2} wins this round. ${plyr2} starts the next round`)
-            this.playGame()
+            // alert(`${this._players2} wins this round. ${plyr2} starts the next round`)
+            this.player2Turn()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
             limbo.push(player1Hand)
             limbo.push(player2Hand)
-            alert("It is a draw. Cards are now in limbo")
+            // alert("It is a draw. Cards are now in limbo")
             this.limboRound()
         } 
     }
@@ -140,28 +152,29 @@ class NewGame {
 }
 
 
-let plyr1 = prompt ("welcome to TopTrumps. Please enter your name:")
-            alert(`Welcome ${plyr1}`)
-let plyr2 = prompt ("Welcome player 2, please enter your name")
+// let plyr1 = prompt ("welcome to TopTrumps. Please enter your name:")
+            // alert(`Welcome ${plyr1}`)
+// let plyr2 = prompt ("Welcome player 2, please enter your name")
+
+let plyr1 = "Adam";
+let plyr2 = "John";
 
 const play1 = new NewGame (plyr1, plyr2)
 
 
 
-            alert("Its time to shuffle the deck")            
+            // alert("Its time to shuffle the deck")            
 let test1 = shuffle(card)
-            alert("Now that the deck has been shuffled its time to deal the cards")
+            // alert("Now that the deck has been shuffled its time to deal the cards")
 
-let halfDeck = test1.slice(0, 14)
+let plyr1Deck = test1.slice(0, 15)
 
-let halfDeck2 = test1.slice(14)             //maybe can just push halfdeck into class
+let plyr2Deck = test1.slice(15)             //maybe can just push halfdeck into class
 
-plyr1Deck = halfDeck
-plyr2Deck = halfDeck2
-            alert ("The cards have been dealt. The game begins")
+            // alert ("The cards have been dealt. The game begins")
 
 
-play1.playGame()
+play1.drawCards()
 
 
 
