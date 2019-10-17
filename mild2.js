@@ -108,6 +108,7 @@ class NewGame {
         alert (`${this._players2} has drawn ${player2Hand[0]}`)
         player1Hand = plyr1Deck.slice(0, 1);
         alert(`${this._players1} has drawn ${player1Hand[0]}`)
+        
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand)
             plyr1Deck.push(player2Hand)
