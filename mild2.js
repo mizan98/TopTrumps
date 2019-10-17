@@ -15,12 +15,12 @@ let card = [
     {name: "steelix", strength: 80},
     {name: "ponyta", strength: 60},
     {name: "caterpee", strength: 20},
-    {name: "caterpod", strength: 30},
+    {name: "metapod", strength: 30},
     {name: "taurus", strength: 60},
     {name: "tentacool", strength: 50},
     {name: "tentacruel", strength: 60},
     {name: "koffing", strength: 30},
-    {name: "weeaing", strength: 40},
+    {name: "weezing", strength: 40},
     {name: "snorlax", strength: 70},
     {name: "pidgey", strength: 20},
     {name: "pidgeotto", strength: 30},
@@ -63,14 +63,14 @@ class NewGame {
         
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand, player2Hand)
-            alert(`${this._players1} wins this round. ${this._players1} starts the next round`)
-            alert(`${this._players1} now has ${plyr1Deck.length}. ${this._players1} starts the next round.`)
+            alert(`${this._players1} wins this round.`)
+            alert(`${this._players1} now has ${plyr1Deck.length} cards. ${this._players1} starts the next round.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
             plyr2Deck.push(player2Hand, player1Hand)
-            alert(`${this._players2} wins this round. ${this._players2} starts the next round`)
-            alert(`${this._players2} now has ${plyr2Deck.length}. ${this._players2} starts the next round.`)
+            alert(`${this._players2} wins this round.`)
+            alert(`${this._players2} now has ${plyr2Deck.length} cards. ${this._players2} starts the next round.`)
             this.checkVictory()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
@@ -115,14 +115,14 @@ class NewGame {
             plyr1Deck.push(player1Hand)
             plyr1Deck.push(player2Hand)
             alert(`${this._players1} wins this round.`)
-            alert(`${this._players1} now has ${plyr1Deck.length}. ${this._players1} starts the next round.`)
+            alert(`${this._players1} now has ${plyr1Deck.length} cards. ${this._players1} starts the next round.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
             plyr2Deck.push(player2Hand)
             plyr2Deck.push(player1Hand)
             alert(`${this._players2} wins this round.`)
-            alert(`${this._players2} now has ${plyr2Deck.length}. ${this._players2} starts the next round.`)
+            alert(`${this._players2} now has ${plyr2Deck.length} cards. ${this._players2} starts the next round.`)
             this.checkVictoryP2()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
@@ -144,16 +144,16 @@ class NewGame {
             plyr1Deck.push(player1Hand)
             plyr1Deck.push(player2Hand)
             plyr1Deck.push(limbo)
-            alert(`${this._players1} wins this round.`)
-            alert(`${this._players1} now has ${plyr1Deck.length}. ${this._players1} starts the next round.`)
+            alert(`${this._players1} wins this round with the limbo cards.`)
+            alert(`${this._players1} now has ${plyr1Deck.length} cards. ${this._players1} starts the next round.`)
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
             plyr2Deck.push(player2Hand)
             plyr2Deck.push(player1Hand)
             plyr2Deck.push(limbo)
-            alert(`${this._players2} wins this round.`)
-            alert(`${this._players2} now has ${plyr2Deck.length}. ${this._players2} starts the next round.`)
+            alert(`${this._players2} wins this round wth the limbo cards.`)
+            alert(`${this._players2} now has ${plyr2Deck.length} cards. ${this._players2} starts the next round.`)
             this.checkVictoryP2()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
