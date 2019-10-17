@@ -57,9 +57,9 @@ class NewGame {
     }
     drawCards() {
         player1Hand = plyr1Deck.splice(0, 1);
-        alert(`${this._players1} has drawn ${player1Hand[0].name}`)
+        alert(`${this._players1} has drawn ${player1Hand[0].name} with a stregnth of ${player1Hand[0].strength}`)
         player2Hand = plyr2Deck.splice(0, 1)
-        alert (`${this._players2} has drawn ${player2Hand[0].name}`)
+        alert (`${this._players2} has drawn ${player2Hand[0].name} with a stregnth of ${player2Hand[0].strength}`)
         
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand, player2Hand)
@@ -105,10 +105,10 @@ class NewGame {
 
     player2Turn (){
         player2Hand = plyr2Deck.slice(0, 1)
-        alert (`${this._players2} has drawn ${player2Hand[0]}`)
+        alert (`${this._players2} has drawn ${player2Hand[0]} with a stregnth of ${player2Hand[0].strength}`)
         player1Hand = plyr1Deck.slice(0, 1);
-        alert(`${this._players1} has drawn ${player1Hand[0]}`)
-        
+        alert(`${this._players1} has drawn ${player1Hand[0]} with a stregnth of ${player1Hand[0].strength}`)
+
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand)
             plyr1Deck.push(player2Hand)
@@ -132,9 +132,9 @@ class NewGame {
     limboRound() {
         alert("limbo round has begun. win the round to win the limbo deck")
         player1Hand = plyr1Deck.slice(0, 1)
-        alert(`${this._players1} has drawn ${player1Hand[0]}`)
+        alert(`${this._players1} has drawn ${player1Hand[0]} with a stregnth of ${player1Hand[0].strength}`)
         player2Hand = plyr2Deck.slice(0, 1) 
-        alert (`${this._players2} has drawn ${player2Hand[0]}`)
+        alert (`${this._players2} has drawn ${player2Hand[0]} with a stregnth of ${player2Hand[0].strength}`)
     
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(player1Hand)
