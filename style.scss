@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.game-container{
+    box-sizing: border-box;
+}
+body{
+    background: url('./pokemon.png');
+}
+
+.title{
+    background: url("./title.png");
+    width: 100px;
+    height: 200px;
+}
+
+.drawcards{
+    display: flex;    
+    flex-wrap: wrap;
+}
+
