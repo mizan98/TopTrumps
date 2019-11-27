@@ -32,7 +32,7 @@ let card = [
 ]
 
 const shuffle = (a) => {
-        var j, x, i;
+        let j, x, i;
         for (i = a.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1));
         x = a[i];
@@ -135,7 +135,7 @@ class NewGame {
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
             limbo.push(player1Hand, player2Hand)
-            console.log(`this is the limbo deck amount ${limbo.length}`)
+            console.log(`this is the limbo deck amount in p2: ${limbo.length}`)
             alert("It is a draw. Cards are now in limbo")
             this.limboRound()
         }
