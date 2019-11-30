@@ -62,10 +62,10 @@ gameLogic = () => {
     //---- Drawcard conditons ----//
     if (player1){
         if (player1Hand[0].strength > player2Hand[0].strength) {
-            plyr1Deck.push(player1Hand, player2Hand)
+            plyr1Deck.push(player1Hand, player2Hand, limbo)
         }
         else if (player1Hand[0].strength < player2Hand[0].strength){
-            plyr2Deck.push(player1Hand, player2Hand)
+            plyr2Deck.push(player1Hand, player2Hand, limbo)
             player1 = false
         }
         else{
