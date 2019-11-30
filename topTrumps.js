@@ -64,9 +64,18 @@ gameLogic = () => {
         }
         else if (player1Hand[0].strength < player2Hand[0].strength){
             plyr2Deck.push(player1Hand, player2Hand)
+            player1 = false
         }
         else{
             limbo.push(player1Hand, player2Hand)
+        }
+    }
+    else if ((plyr1Deck.length == card.length) || (plyr2Deck.length == card.length)){
+        if (player1){
+            console.log('player1 you have won')
+        }
+        else {
+            console.log('player2 you have won')
         }
     }
 
