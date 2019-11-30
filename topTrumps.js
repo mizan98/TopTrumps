@@ -58,6 +58,8 @@ const shuffle = (a) => {
 //----- Game start function -----//
 
 gameLogic = () => {
+
+    //---- Drawcard conditons ----//
     if (player1){
         if (player1Hand[0].strength > player2Hand[0].strength) {
             plyr1Deck.push(player1Hand, player2Hand)
@@ -70,6 +72,8 @@ gameLogic = () => {
             limbo.push(player1Hand, player2Hand)
         }
     }
+
+    //---- Win conditions check ----//
     else if ((plyr1Deck.length == card.length) || (plyr2Deck.length == card.length)){
         if (player1){
             console.log('player1 you have won')
