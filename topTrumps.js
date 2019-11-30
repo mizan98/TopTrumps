@@ -38,6 +38,9 @@ let limbo = []
 let player1Hand = []
 let player2Hand = []
 
+//---- Variables ----//
+let player1 = true
+
 //----- Shuffle function added -----//
 const shuffle = (a) => {
         let j, x, i;
@@ -53,3 +56,9 @@ const shuffle = (a) => {
 }
 
 //----- Game start function -----//
+
+gameLogic = () => {
+    if (player1Hand[0].strength > player2Hand[0].strength) {
+        plyr1Deck.push(player1Hand, player2Hand)
+    }
+}
