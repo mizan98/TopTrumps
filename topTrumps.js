@@ -58,7 +58,10 @@ const shuffle = (a) => {
 //----- Game start function -----//
 
 gameLogic = () => {
+    if (player1){
     if (player1Hand[0].strength > player2Hand[0].strength) {
         plyr1Deck.push(player1Hand, player2Hand)
+        }
     }
+
 }
