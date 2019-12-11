@@ -32,14 +32,13 @@ let card = [
     {name: "meowth", strength: 40, defence: 20}
 ]
 
-let plyr1Deck = []
-let plyr2Deck = []
-let limbo = []
-let player1Hand = []
-let player2Hand = []
-
 //---- Variables ----//
-let player1 = true
+let plyr1Deck = [];
+let plyr2Deck = [];
+let limbo = [];
+let player1Hand = [];
+let player2Hand = [];
+let turn = player;
 
 //----- Shuffle function added -----//
 const shuffle = (a) => {
@@ -55,33 +54,18 @@ const shuffle = (a) => {
     }
 }
 
-//----- Game start function -----//
+//---- Player toggle ----//
+playerTurn = (player) => {
 
-gameLogic = () => {
+    if(player1){
+        player1Hand = plyr1Deck.splice(0, 1);
+        player2Hand = plyr2Deck.splice(0, 1);
+        if(player1Hand[0].strength > player2Hand[0].strength){
 
-    //---- Drawcard conditons ----//
-    if (player1){
-        if (player1Hand[0].strength > player2Hand[0].strength) {
-            plyr1Deck.push(player1Hand, player2Hand, limbo)
-        }
-        else if (player1Hand[0].strength < player2Hand[0].strength){
-            plyr2Deck.push(player1Hand, player2Hand, limbo)
-            player1 = false
-        }
-        else{
-            limbo.push(player1Hand, player2Hand)
+            turn = player1
         }
     }
-
-    //---- Win conditions check ----//
-    else if ((plyr1Deck.length == card.length) || (plyr2Deck.length == card.length)){
-        if (player1){
-            console.log('player1 you have won')
-        }
-        else {
-            console.log('player2 you have won')
-        }
-    }
-
-
 }
+
+
+ 
