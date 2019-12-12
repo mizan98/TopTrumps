@@ -152,7 +152,7 @@ class NewGame {
         alert (`${this._players2} has drawn ${player2Hand[0].name} with a strength of ${player2Hand[0].strength}`)
     
         if (player1Hand[0].strength > player2Hand[0].strength){
-            plyr1Deck.push(player1Hand, player2Hand, ...limbo)
+            plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
             limbo = []
             console.log(`this is p1 deck after limbo ${plyr1Deck.length}`)
             console.log(`this is the limbo deck amount ${limbo.length}`)
@@ -163,7 +163,7 @@ class NewGame {
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
-            plyr2Deck.push(player2Hand, player1Hand, ...limbo)
+            plyr2Deck.push(...player2Hand, ...player1Hand, ...limbo)
             limbo = []
 
             console.log(`this is p2 deck after winning limbo round ${plyr2Deck.length}`)
@@ -175,7 +175,7 @@ class NewGame {
             this.checkVictoryP2()
         }
         else if (player1Hand[0].strength == player2Hand[0].strength) {
-            limbo.push(player1Hand, player2Hand, ...limbo)
+            limbo.push(...player1Hand, ...player2Hand, ...limbo)
             console.log(`this is the limbo deck amount after limbo round draw${limbo.length}`)
 
             alert("It is a draw. Cards are now in limbo")
