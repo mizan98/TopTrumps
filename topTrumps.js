@@ -110,6 +110,19 @@ class Game {
         this.player2 = player2
     }
 
+    shuffle (a) {
+        let j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+            }
+        {    
+            return a;
+        }
+    }
+
     start() {
         if (player1Hand[0].strength > player2Hand[0].strength){
             plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
@@ -125,7 +138,8 @@ class Game {
             this.checkVictory()
         }
         else {
-            this.limbo.push(...player1Hand, ...player2Hand)
+            limbo.push(...player1Hand, ...player2Hand)
+
         }
     }
 
