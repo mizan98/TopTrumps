@@ -33,12 +33,13 @@ let card = [
 ]
 
 //---- Variables ----//
-let plyr1Deck = [];
-let plyr2Deck = [];
+// let plyr1Deck = [];
+// let plyr2Deck = [];
 let limbo = [];
 let player1Hand = [];
 let player2Hand = [];
-let turn = true
+let turn = player;
+
 
 //----- Shuffle function added -----//
 const shuffle = (a) => {
@@ -55,44 +56,88 @@ const shuffle = (a) => {
 }
 
 //---- Game Logic ----//
-drawCards = () => {
+// drawCards = () => {
 
-    player1Hand = plyr1Deck.splice(0, 1);
-    player2Hand = plyr2Deck.splice(0, 1);
+//     player1Hand = plyr1Deck.splice(0, 1);
+//     player2Hand = plyr2Deck.splice(0, 1);
 
-    if (turn) {
-        if (player1Hand[0].strength > player2Hand[0].strength){
-            plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
-            turn = true
-            limbo = []
-            checkVictory()
-        }
-    }
-    else if (!turn){
-        if (player2Hand[0].strength > player1Hand[0].strength){
-            plyr2Deck.push(...player2Hand, ...player1Hand, ...limbo)
-            turn = false
-            limbo = []
-            checkVictory()
-        }
-    }
+//     if (player1 ) {
+//         if (player1Hand[0].strength > player2Hand[0].strength){
+//             plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
+//             turn = player1
+//             limbo = []
+//             checkVictory()
+//         }
+    
+//         else if (player2Hand[0].strength > player1Hand[0].strength){
+//             plyr2Deck.push(...player2Hand, ...player1Hand, ...limbo)
+//             turn = player2
+//             limbo = []
+//             checkVictory()
+//         }
+//         else {
+//             limbo.push(...player1Hand, ...player2Hand)
+//         }
+//     }
+// }
 
-        else {
-            limbo.push(...player1Hand, ...player2Hand)
-        }
-}
 
 //---- Victory Check ----//
-checkVictory = () => {
-    checkVictory() {
-        if (plyr1Deck.length == card.length){
+// checkVictory = () => {
+//     checkVictory() {
+//         if (plyr1Deck.length == card.length){
+//         }
+//         else if(plyr2Deck.length == card.length){
+//         }
+//         else {
+//             drawCards()
+//         }
+//     }
+// }
+
+
+class player {
+    constructor(name, deck) {
+        this.name = name
+        this.deck = deck;
+    }
+}
+ 
+
+class Game {
+    constructor(player1, player2) {
+        this.player1 = player1
+        this.player2 = player2
+    }
+
+    start() {
+        if (player1Hand[0].strength > player2Hand[0].strength){
+            plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
+            turn = player1
+            limbo = []
+            this.checkVictory()
         }
-        else if(plyr2Deck.length == card.length){
+    
+        else if (player2Hand[0].strength > player1Hand[0].strength){
+            plyr2Deck.push(...player2Hand, ...player1Hand, ...limbo)
+            turn = player2
+            limbo = []
+            this.checkVictory()
         }
         else {
-            drawCards()
+            this.limbo.push(...player1Hand, ...player2Hand)
+        }
+    }
+
+    checkVictory() {
+        if (plyr1Deck.length == card.length){
+            console.log('player 1 wins')
+        }
+            else if(plyr2Deck.length == card.length){
+            console.log('player 2 wins')
+        }
+            else {
+                this.drawCards()
         }
     }
 }
-
- 
