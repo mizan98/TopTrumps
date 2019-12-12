@@ -41,20 +41,6 @@ let player2Hand = [];
 let turn = player;
 
 
-//----- Shuffle function added -----//
-const shuffle = (a) => {
-        let j, x, i;
-        for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    {    
-    return a;
-    }
-}
-
 //---- Game Logic ----//
 // drawCards = () => {
 
@@ -96,31 +82,30 @@ const shuffle = (a) => {
 // }
 
 
-class player {
-    constructor(name, deck) {
-        this.name = name
+class Cards {
+    constructor(deck) {
         this.deck = deck;
     }
-}
- 
-
-class Game {
-    constructor(player1, player2) {
-        this.player1 = player1
-        this.player2 = player2
-    }
-
     shuffle (a) {
         let j, x, i;
-        for (i = a.length - 1; i > 0; i--) {
+            for (i = a.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
             x = a[i];
             a[i] = a[j];
             a[j] = x;
-            }
-        {    
-            return a;
         }
+        {    
+        return a;
+        }
+    }
+}
+ 
+
+class Game extends Cards{
+    constructor(player1, player2) {
+        super(deck)
+        this.player1 = player1
+        this.player2 = player2
     }
 
     start() {
@@ -155,3 +140,4 @@ class Game {
         }
     }
 }
+
