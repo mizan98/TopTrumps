@@ -25,7 +25,7 @@ let card = [
     {name: "snorlax", strength: 70, defence: 100},
     {name: "pidgey", strength: 20, defence: 10},
     {name: "pidgeotto", strength: 30, defence: 20},
-    {name: "pidget", strength: 40, defence: 30},
+    {name: "pidgey", strength: 40, defence: 30},
     {name: "ekans", strength: 50, defence: 40},
     {name: "arbok", strength: 60, defence: 50},
     {name: "lickitung", strength: 50, defence: 50},
@@ -38,34 +38,46 @@ let card = [
 let limbo = [];
 let player1Hand = [];
 let player2Hand = [];
-let turn = player;
+let turn = true;
 
+gameLogic = () => {
+
+    if (player1Hand[0].strength > player2Hand[0].strength){
+        plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
+        turn = player1
+        limbo = []
+        checkVictory()
+    }
+
+    else if (player2Hand[0].strength > player1Hand[0].strength){
+        plyr2Deck.push(...player2Hand, ...player1Hand, ...limbo)
+        turn = player2
+        limbo = []
+        checkVictory()
+    }
+    else {
+        limbo.push(...player1Hand, ...player2Hand)
+    }
+}
 
 //---- Game Logic ----//
-// drawCards = () => {
+drawCards = () => {
 
-//     player1Hand = plyr1Deck.splice(0, 1);
-//     player2Hand = plyr2Deck.splice(0, 1);
+   
 
-//     if (player1 ) {
-//         if (player1Hand[0].strength > player2Hand[0].strength){
-//             plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
-//             turn = player1
-//             limbo = []
-//             checkVictory()
-//         }
-    
-//         else if (player2Hand[0].strength > player1Hand[0].strength){
-//             plyr2Deck.push(...player2Hand, ...player1Hand, ...limbo)
-//             turn = player2
-//             limbo = []
-//             checkVictory()
-//         }
-//         else {
-//             limbo.push(...player1Hand, ...player2Hand)
-//         }
-//     }
-// }
+    if (player1) {
+        
+    }
+}
+
+togglePlayer = () => {
+    if (player1 = true){
+    player1 = false 
+    }
+    else {
+        player1 = true
+    }
+}
 
 
 //---- Victory Check ----//
@@ -83,8 +95,9 @@ let turn = player;
 
 
 class Cards {
-    constructor(deck) {
-        this.deck = deck;
+    constructor(game) {
+        this.game = game;
+        this.deck = []
     }
     shuffle (a) {
         let j, x, i;
