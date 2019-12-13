@@ -44,14 +44,14 @@ gameLogic = () => {
 
     if (player1Hand[0].strength > player2Hand[0].strength){
         plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
-        turn = player1
+        turn = true
         limbo = []
         checkVictory()
     }
 
     else if (player2Hand[0].strength > player1Hand[0].strength){
         plyr2Deck.push(...player2Hand, ...player1Hand, ...limbo)
-        turn = player2
+        turn = false
         limbo = []
         checkVictory()
     }
@@ -60,38 +60,34 @@ gameLogic = () => {
     }
 }
 
-//---- Game Logic ----//
-drawCards = () => {
-
-   
-
-    if (player1) {
-        
-    }
-}
-
+//---- Turn toggle ---//
 togglePlayer = () => {
-    if (player1 = true){
-    player1 = false 
+    if (turn){
+        player1Hand = plyr1Deck.splice(0, 1);
+        player2Hand = plyr2Deck.splice(0, 1);
+        gameLogic();
     }
     else {
-        player1 = true
+        player2Hand = plyr2Deck.splice(0, 1);
+        player1Hand = plyr1Deck.splice(0, 1);
+        gameLogic();
     }
 }
 
-
 //---- Victory Check ----//
-// checkVictory = () => {
-//     checkVictory() {
-//         if (plyr1Deck.length == card.length){
-//         }
-//         else if(plyr2Deck.length == card.length){
-//         }
-//         else {
-//             drawCards()
-//         }
-//     }
-// }
+checkVictory = () => {
+
+    if (plyr1Deck.length == card.length){
+        console.log("p1 wins")
+        }
+    else if(plyr2Deck.length == card.length){
+            console.log("p2 wins")
+        }
+    else {
+        drawCards()
+        }
+}
+
 
 
 class Cards {
