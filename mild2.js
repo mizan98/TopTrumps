@@ -61,8 +61,8 @@ class NewGame {
         player2Hand = plyr2Deck.splice(0, 1)
         alert (`${this._players2} has drawn ${player2Hand[0].name} with a strength of ${player2Hand[0].strength}`)
         
-        if (player1Hand[0].strength > player2Hand[0].strength){
-            plyr1Deck.push(...player1Hand, ...player2Hand)
+        if (player1Hand[0].strength  > player2Hand[0].strength){
+            plyr1Deck.push(...player1Hand, ...player2Hand, ...limbo)
             alert(`${this._players1} wins this round.`)
             alert(`${this._players1} now has ${plyr1Deck.length} cards. ${this._players1} starts the next round.`)
             console.log(`this is player1 deck on p1 turn ${plyr1Deck.length}`)
@@ -70,7 +70,7 @@ class NewGame {
             this.checkVictory()
         }
         else if (player2Hand[0].strength > player1Hand[0].strength){
-            plyr2Deck.push(...player2Hand, ...player1Hand)
+            plyr2Deck.push(...player2Hand, ...player1Hand, ...limbo)
             alert(`${this._players2} wins this round.`)
             alert(`${this._players2} now has ${plyr2Deck.length} cards. ${this._players2} starts the next round.`)
             console.log(`this is p2 deck after loss ${plyr2Deck.length}`)
