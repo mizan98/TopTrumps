@@ -77,6 +77,9 @@ class NewGame {
             alert(`${this._players1} now has ${plyr1Deck.length} cards.`)
             this.checkVictory()
         }
+        else{
+            limbo.push(...player1Hand, ...player2Hand)
+        }
     }
 
     checkVictory() {
