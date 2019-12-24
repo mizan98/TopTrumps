@@ -79,6 +79,7 @@ class NewGame {
         }
         else{
             limbo.push(...player1Hand, ...player2Hand)
+            this.drawCards()
         }
     }
 
