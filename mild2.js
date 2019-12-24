@@ -77,14 +77,6 @@ class NewGame {
             alert(`${this._players1} now has ${plyr1Deck.length} cards.`)
             this.checkVictoryP2()
         }
-        else if (player1Hand[0].strength == player2Hand[0].strength) {
-            limbo.push(...player1Hand, ...player2Hand)
-            console.log(`this is the limbo deck amount ${limbo.length}`)
-
-            alert("It is a draw. Cards are now in limbo")
-            this.limboRound()
-        }
-        
     }
 
     checkVictory() {
